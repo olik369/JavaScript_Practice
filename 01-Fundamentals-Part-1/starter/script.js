@@ -33,7 +33,7 @@ let job2 = 'Teacher';
 console.log(myFirstJob);
 */
 
-// 12장 DATA TYPES
+//* 12장 DATA TYPES
 /*
 JavaScript에서 값은 개체가 아니면 원시값(Primitive)
 7가지 원시 데이터 종류가 있음
@@ -61,7 +61,7 @@ console.log(typeof javascriptIsFun);
 */
 
 
-// 13장 let, const and var
+//* 13장 let, const and var
 /**
 let, const (ES6), var은 오래된 방법
 기본적으로 깨끗한 코드를 짜고 싶으면 const를 기본적으로 사용하고
@@ -83,7 +83,7 @@ console.log(lastName);
 
 
 
-// 14장 Basic Operators
+//* 14장 Basic Operators
 /**
 // Math operators (산술 연산자)
 const now = 2037;
@@ -115,7 +115,7 @@ const isFullAge = ageSarah >= 18;
 console.log(now - 1991 > now - 2018);
 */
 
-// 15장 Operator Precedence
+//* 15장 Operator Precedence
 /*
 MDN operator precedence 연산자 우선순위가 높은 순서대로 실행
 const now = 2037;
@@ -132,7 +132,7 @@ const averageAge = (ageJonas + ageSarah) / 2
 console.log(ageJonas, ageSarah, averageAge);
 */
 
-// 16장 Coding Challenge #1
+//* 16장 Coding Challenge #1
 /*
 Mark and John are trying to compare their BMI (Body Mass Index), which is
 calculated using the formula:
@@ -180,10 +180,60 @@ markHigherBMI = markBMI > johnBMI;
 console.log('Mark has a higher BMI than John : ' + markHigherBMI);
 */
 
-// 17장 Strings and Template Literals
+//* 17장 Strings and Template Literals
+/*
+const firstName = 'Jonas';
+const job = 'teacher';
+const birthYear = 1991;
+const year = 2037;
 
-// 18장 Taking Decisions: if / else Statements
+const jonas = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
+console.log(jonas);
+
+*템플릿 리터럴 ``(backtick) 을 사용해서 활용가능(ES6)
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`;
+console.log(jonasNew);
+
+console.log(`Just a regular string...`);
+
+*줄바꿈 ES6 이전 방식
+console.log(`String with \n\
+multiple \n\
+lines`);
+
+*줄바꿈 ES6 이후 방식 (HTML을 Javascript로 작성할때 매우 유용할 것임)
+console.log(`String
+multiple
+lines`);
+*/
+
+//* 18장 Taking Decisions: if / else Statements
+/*
+*제어 구조 if() {}
+const age = 15;
+const isOldEnough = age >= 18;
+
+if (age >= 18) {
+  console.log(`Sarah can start driving license 🎈`);
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`)
+}
+
+const birthYear = 2012;
+
+let century;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
+console.log(century);
+*/
+
 // 19장 Coding Challenge #2
+
+
 // 20장 Type Conversion and Coercion
 // 21장 Truthy and Falsy Values
 // 22장 Equality Operators: == vs. ===

@@ -1,3 +1,4 @@
+/**
 let js = 'amazing';
 // console.log(40 + 8 + 23 - 10);
 
@@ -30,9 +31,9 @@ let job1 = 'Programmer';
 let job2 = 'Teacher';
 
 console.log(myFirstJob);
+*/
 
 // 12장 DATA TYPES
-
 /*
 JavaScript에서 값은 개체가 아니면 원시값(Primitive)
 7가지 원시 데이터 종류가 있음
@@ -43,21 +44,109 @@ JavaScript에서 값은 개체가 아니면 원시값(Primitive)
 5. Null(비어있는 값)
 6. Symbol(ES2015) 유니크한 값이면서 변경이 불가능한 값
 7. BigInt(ES2020) 매우 큰 정수를 담음
-*/
-
-//* JavaScript는 동적 타이핑을 지원함 -> 수동으로 데이터 유형을 정의할 필요 X
-//! JavaScript에서 Value(값)은 타입을 갖고 있지만, 변수는 갖고있지 않음
-// 변수는 단순히 유형이 있는 값을 저장(즉, 루아처럼 같은 변수에 다른 자료형을 넣어도 상관이 없음)
+* JavaScript는 동적 타이핑을 지원함 -> 수동으로 데이터 유형을 정의할 필요 X
+! JavaScript에서 Value(값)은 타입을 갖고 있지만, 변수는 갖고있지 않음
+변수는 단순히 유형이 있는 값을 저장(즉, 루아처럼 같은 변수에 다른 자료형을 넣어도 상관이 없음)
 
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
 
-// console.log(typeof true);
+console.log(typeof true);
 console.log(typeof javascriptIsFun);
-// console.log(typeof 23);
-// console.log(typeof 'Jonas');
+console.log(typeof 23);
+console.log(typeof 'Jonas');
 
 javascriptIsFun = 'YES!';
 console.log(typeof javascriptIsFun);
+*/
 
-// 13장
+
+// 13장 let, const and var
+/**
+let, const (ES6), var은 오래된 방법
+기본적으로 깨끗한 코드를 짜고 싶으면 const를 기본적으로 사용하고
+확실하게 변경되는 곳에는 let을 쓰는것을 매우권장
+!var은 되도록 사용하지 말기!!(ES6 이전에 쓰임)
+let age = 30;
+age = 31; //변수 재할당
+
+const birthYear = 1991;
+// birthYear = 1990; // TypeError(Const) Immutable 변수임(mutable이 아니라!)
+
+// const job;  // const값은 항상 초기값이 필요함
+var job = 'programmer';
+job = 'teacher'
+
+lastName = 'Schmedtmann'; // 전역변수는 되도록 쓰지않아야함(당연)
+console.log(lastName);
+*/
+
+
+
+// 14장 Basic Operators
+/**
+// Math operators (산술 연산자)
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+console.log(ageJonas, ageSarah);
+
+console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
+// 2 ** 3 means 2의 3승 = 2 * 2 * 2
+
+const firstName = 'Jonas';
+const lastName = 'Schmedtmann';
+console.log(firstName + ' ' + lastName);
+
+// Assignment operators (할당 연산자)
+let x = 10 + 5; // 15
+x += 10;  // x = x + 10 = 25
+x *= 4; // x = x * 4 = 100
+x++;  // x = x + 1
+x--;  // x = x - 1
+console.log(x);
+
+// Comparison operators (비교 연산자)
+console.log(ageJonas > ageSarah); // <, >, <=, >=
+console.log(ageSarah >= 18);
+
+const isFullAge = ageSarah >= 18;
+
+console.log(now - 1991 > now - 2018);
+*/
+
+// 15장 Operator Precedence
+/*
+MDN operator precedence 연산자 우선순위가 높은 순서대로 실행
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+
+console.log(now - 1991 > now - 2018);
+
+let x, y;
+x = y = 25 - 10 - 5;  // x = y = 10, x = 10 (both x, y is 10!)
+console.log(x, y);
+
+const averageAge = (ageJonas + ageSarah) / 2
+console.log(ageJonas, ageSarah, averageAge);
+*/
+
+// 16장 Coding Challenge #1
+
+
+// 17장 Strings and Template Literals
+
+// 18장 Taking Decisions: if / else Statements
+// 19장 Coding Challenge #2
+// 20장 Type Conversion and Coercion
+// 21장 Truthy and Falsy Values
+// 22장 Equality Operators: == vs. ===
+// 23장 Boolean Logic
+// 24장 Logical Operators
+// 25장 Coding Challenge #3
+// 26장 The switch Statement
+// 27장 Statements and Expressions
+// 28장 The Conditional(Ternary) Operator
+// 29장 Coding Challenge #4
+// 30장 JavaScript Releases: ES5, ES6 + and ESNext

@@ -133,7 +133,52 @@ console.log(ageJonas, ageSarah, averageAge);
 */
 
 // 16장 Coding Challenge #1
+/*
+Mark and John are trying to compare their BMI (Body Mass Index), which is
+calculated using the formula:
+BMI = mass / height ** 2 = mass / (height * height) (mass in kg
+and height in meter).
+Your tasks:
+1. Store Mark's and John's mass and height in variables
+2. Calculate both their BMIs using the formula (you can even implement both
+versions)
+3. Create a Boolean variable 'markHigherBMI' containing information about
+whether Mark has a higher BMI than John.
+Test data:
+§ Data 1: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95
+m tall.
+§ Data 2: Marks weights 95 kg and is 1.88 m tall. John weights 85 kg and is 1.76
+m tall
 
+* 되도록 질량과 키는 변하지 않는값이라 생각해서 const로 쓰는게 좋을것임
+console.log('Data 1');
+let markMassKg = 78;
+let markHeightMeter = 1.69;
+let markBMI = markMassKg / markHeightMeter ** 2;
+console.log('Mark`s BMI is ' + markBMI);
+
+let johnMassKg = 92
+let johnHeightMeter = 1.95
+let johnBMI = johnMassKg / johnHeightMeter ** 2;
+console.log('John`s BMI is ' + johnBMI);
+
+let markHigherBMI = markBMI > johnBMI;
+console.log('Mark has a higher BMI than John : ' + markHigherBMI);
+
+console.log('Data 2');
+markMassKg = 95;
+markHeightMeter = 1.88
+markBMI = markMassKg / markHeightMeter ** 2;
+console.log('Mark`s BMI is ' + markBMI);
+
+johnMassKg = 85;
+johnHeightMeter = 1.76;
+johnBMI = johnMassKg / johnHeightMeter ** 2;
+console.log('John`s BMI is ' + johnBMI);
+
+markHigherBMI = markBMI > johnBMI;
+console.log('Mark has a higher BMI than John : ' + markHigherBMI);
+*/
 
 // 17장 Strings and Template Literals
 

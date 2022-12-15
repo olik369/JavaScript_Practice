@@ -242,7 +242,6 @@ is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark
 BMI (28.3) is higher than John's (23.9)!"
 Hint: Use an if/else statement
 */
-
 //* CODE
 /*
 console.log('Data 1');
@@ -278,8 +277,60 @@ if (markHigherBMI) {
 }
 */
 
-// 20장 Type Conversion and Coercion
-// 21장 Truthy and Falsy Values
+//* 20장 Type Conversion and Coercion (타입 변환/강제 형변환)
+/*
+Type Conversion
+수동으로 형변환 하는것을 말함
+
+Type Coercion
+Javascript가 타입을 자동으로 변환하는 경우
+*/
+//* CODE
+/*
+* type conversion 형변환
+const inputYear = '1991';
+console.log(Number(inputYear), inputYear);  //inputYear은 숫자로 변환됨
+console.log(inputYear + 18);  //199118
+
+console.log(Number('Jonas')); // NaN 출력(not a number)
+console.log(typeof NaN);  // NaN은 number 타입임(숫자가 아닌 유형의 숫자 ㅋㅋ)
+
+console.log(String(23), 23);  // to number, string, boolean은 가능하지만 undefined와 null은 불가
+
+* type coercion 강제 형변환
+console.log('I am ' + 23 + ' years old'); // 문자열 사이에 + 연산이 있는경우 숫자는 문자열로 강제 형변환
+console.log('23' - '10' - 3); // 문자열 사이에 - 연산이 있는경우 문자열은 숫자로 강제 형변환
+console.log('23' * '2');  // 곱셉(나눗셈, 승수) 연산자도 마찬가지 숫자로 됨
+
+let n = '1' + 1;  // 11 문자열
+n = n - 1;        // 10 숫자
+console.log(n);
+*/
+
+//* 21장 Truthy and Falsy Values
+/*
+! 5가지 falsy Value : 0, '', undefined, null, NaN
+*/
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean('Jonas'));
+console.log(Boolean({})); // 빈 객체
+// Javascript에서 Boolean으로 강제 형변환을 하는 경우는 단 2가지 경우임
+// 논리 연산자를 사용한 경우, 논리 구문(if ~ else) 사용한 경우
+
+const money = 100;
+if (money) {
+  console.log(`Don't spend it all ;)`);
+} else {
+  console.log(`You should get a job!`);
+}
+
+let height = 0;
+if (height) {
+  console.log(`YAY! Height is defined`);
+} else {
+  console.log(`Height is UNDEFINED`);
+}
 // 22장 Equality Operators: == vs. ===
 // 23장 Boolean Logic
 // 24장 Logical Operators

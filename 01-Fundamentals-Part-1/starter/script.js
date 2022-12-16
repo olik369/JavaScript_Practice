@@ -311,6 +311,8 @@ console.log(n);
 /*
 ! 5가지 falsy Value : 0, '', undefined, null, NaN
 */
+//* CODE
+/*
 console.log(Boolean(0));
 console.log(Boolean(undefined));
 console.log(Boolean('Jonas'));
@@ -331,8 +333,48 @@ if (height) {
 } else {
   console.log(`Height is UNDEFINED`);
 }
-// 22장 Equality Operators: == vs. ===
-// 23장 Boolean Logic
+*/
+
+//* 22장 Equality Operators: == vs. ===
+/*
+== (loosen) 강제 형변환을 시도함
+=== (strict) 강제 형변환을 시도하지 않음(javaScript에서 되도록이면 이것만 쓰는게 맞음)
+*/
+
+//* CODE
+/*
+const age = '18';
+if (age === 18) console.log(`You just became an adult :D (strict)`);
+=== 은 강제 형변환을 하지 않음(strict)
+== 강제 형변환을 함
+
+if (age == 18) console.log(`You just became an adult :D (loose)`);
+
+const favorite = Number(prompt(`What's your favorite number?`));  // prompt는 string을 뱉어냄
+console.log(favorite);
+console.log(typeof favorite);
+
+if (favorite === 23) {
+  console.log(`Cool! 23 is an amazing number!`)
+} else if (favorite === 7) {
+  console.log('7 is also a cool number')
+} else if (favorite === 9) {
+  console.log('9 is also a cool number');
+} else {
+  console.log(`Number is not 23 or 7 or 9`);
+}
+
+if (favorite !== 23) console.log(`Why not 23?`);  // !==(strict) !=(loosen)
+*/
+
+//* 23장 Boolean Logic
+/*
+A AND B (true, true -> true) (true, false -> false)
+A OR B (false, false -> false) (true, false -> true)
+!A (true -> false) (false -> true)
+*/
+
+
 // 24장 Logical Operators
 // 25장 Coding Challenge #3
 // 26장 The switch Statement

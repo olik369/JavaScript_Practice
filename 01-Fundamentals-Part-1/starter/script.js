@@ -317,8 +317,8 @@ console.log(Boolean(0));
 console.log(Boolean(undefined));
 console.log(Boolean('Jonas'));
 console.log(Boolean({})); // 빈 객체
-// Javascript에서 Boolean으로 강제 형변환을 하는 경우는 단 2가지 경우임
-// 논리 연산자를 사용한 경우, 논리 구문(if ~ else) 사용한 경우
+Javascript에서 Boolean으로 강제 형변환을 하는 경우는 단 2가지 경우임
+논리 연산자를 사용한 경우, 논리 구문(if ~ else) 사용한 경우
 
 const money = 100;
 if (money) {
@@ -374,11 +374,229 @@ A OR B (false, false -> false) (true, false -> true)
 !A (true -> false) (false -> true)
 */
 
+//* 24장 Logical Operators
+/*
+&& (and)
+|| (or)
+! (not)
+*/
 
-// 24장 Logical Operators
-// 25장 Coding Challenge #3
-// 26장 The switch Statement
-// 27장 Statements and Expressions
-// 28장 The Conditional(Ternary) Operator
-// 29장 Coding Challenge #4
+//* CODE
+/*
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+const shouldDrive = hasDriversLicense && hasGoodVision;
+
+if (shouldDrive) {
+  console.log('Sarah is able to drive!');
+} else {
+  console.log(`Someone else should drive...`);
+}
+
+const isTired = false; // C
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (shouldDrive && !isTired) {
+  console.log('Sarah is able to drive!');
+} else {
+  console.log(`Someone else should drive...`);
+}
+*/
+
+//* 25장 Coding Challenge #3
+/*
+There are two gymnastics teams, Dolphins and Koalas. They compete against each
+other 3 times. The winner with the highest average score wins a trophy!
+Your tasks:
+1. Calculate the average score for each team, using the test data below
+
+2. Compare the team's average scores to determine the winner of the competition,
+and print it to the console. Don't forget that there can be a draw, so test for that
+as well (draw means they have the same average score)
+
+3. Bonus 1: Include a requirement for a minimum score of 100. With this rule, a
+team only wins if it has a higher score than the other team, and the same time a
+score of at least 100 points. Hint: Use a logical operator to test for minimum
+score, as well as multiple else-if blocks �
+
+4. Bonus 2: Minimum score also applies to a draw! So a draw only happens when
+both teams have the same score and both have a score greater or equal 100
+points. Otherwise, no team wins the trophy
+Test data:
+§ Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
+§ Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123
+§ Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
+*/
+
+//*CODE
+/*
+console.log(`Data 1`);
+const scoreDolphins_1 = 96
+const scoreDolphins_2 = 108
+const scoreDolphins_3 = 89
+const avgScoreDolphins = (scoreDolphins_1 + scoreDolphins_2 + scoreDolphins_3) / 3
+
+const scoreKoalas_1 = 88
+const scoreKoalas_2 = 91
+const scoreKoalas_3 = 110
+const avgScoreKoalas = (scoreKoalas_1 + scoreKoalas_2 + scoreKoalas_3) / 3
+
+console.log(`Dolphins's avg score : ${avgScoreDolphins} Koalas's avg score : ${avgScoreKoalas} `)
+if (avgScoreDolphins > avgScoreKoalas) console.log(`Dolphins is Winner!`);
+else if (avgScoreDolphins < avgScoreKoalas) console.log(`Koalas is Winner!`);
+else console.log(`Dolphins and Koalas Draw!`);
+
+Dolphins is Winner!
+
+console.log(`Bonus 1`)
+const MinScoreToWin = 100
+
+const scoreDolphins_1 = 97
+const scoreDolphins_2 = 112
+const scoreDolphins_3 = 101
+const avgScoreDolphins = (scoreDolphins_1 + scoreDolphins_2 + scoreDolphins_3) / 3
+const overMinScoreDolphins = avgScoreDolphins >= MinScoreToWin
+
+const scoreKoalas_1 = 109
+const scoreKoalas_2 = 95
+const scoreKoalas_3 = 123
+const avgScoreKoalas = (scoreKoalas_1 + scoreKoalas_2 + scoreKoalas_3) / 3
+const overMinScoreKoalas = avgScoreKoalas >= MinScoreToWin
+
+console.log(`Dolphins's avg score : ${avgScoreDolphins} Koalas's avg score : ${avgScoreKoalas} `)
+if (avgScoreDolphins > avgScoreKoalas && overMinScoreDolphins) console.log(`Dolphins is Winner!`);
+else if (avgScoreDolphins < avgScoreKoalas && overMinScoreKoalas) console.log(`Koalas is Winner!`);
+else if (avgScoreDolphins === avgScoreKoalas) console.log(`Dolphins and Koalas Draw!`);
+else console.log(`No one wins trophy`);
+
+Koalas is Winner!
+
+console.log(`Bonus 2`)
+const MinScoreToWin = 100
+const scoreDolphins_1 = 97
+const scoreDolphins_2 = 112
+const scoreDolphins_3 = 101
+const avgScoreDolphins = (scoreDolphins_1 + scoreDolphins_2 + scoreDolphins_3) / 3
+const overMinScoreDolphins = avgScoreDolphins >= MinScoreToWin
+
+const scoreKoalas_1 = 109
+const scoreKoalas_2 = 95
+const scoreKoalas_3 = 106
+const avgScoreKoalas = (scoreKoalas_1 + scoreKoalas_2 + scoreKoalas_3) / 3
+const overMinScoreKoalas = avgScoreKoalas >= MinScoreToWin
+
+console.log(`Dolphins's avg score : ${avgScoreDolphins} Koalas's avg score : ${avgScoreKoalas} `)
+if (avgScoreDolphins > avgScoreKoalas && overMinScoreDolphins) console.log(`Dolphins is Winner!`);
+else if (avgScoreDolphins < avgScoreKoalas && overMinScoreKoalas) console.log(`Koalas is Winner!`);
+else if (avgScoreDolphins === avgScoreKoalas && overMinScoreDolphins && overMinScoreKoalas) console.log(`Dolphins and Koalas Draw!`);
+else console.log(`No one wins trophy`)
+
+Dolphins and Koalas Draw!
+*/
+
+//* 26장 The switch Statement
+/*
+switch (변수) {
+  case 조건1 : 엄격한 비교로 적용함 (변수 === 조건1)
+  break;
+  case 조건2 :
+  break;
+  case 조건3 :
+  break;
+  default :
+}
+*/
+
+//* CODE
+/*
+const day = 'thursday';
+switch (day) {
+  case 'monday':  // day === 'monday'
+    console.log(`Plan course structure`);
+    console.log(`Go to coding meetup`);
+    break;
+  case 'tuesday':
+    console.log('Prepare theory videos');
+    break;
+  case 'wednesday':
+  case 'thursday':
+    console.log(`Write code examples`);
+    break;
+  case 'friday':
+    console.log(`Record videos`);
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log(`Enjoy the weekend :D`);
+    break;
+  default:
+    console.log(`Not a valid day!`);
+}
+
+if (day === 'monday') {
+  console.log(`Plan course structure`);
+  console.log(`Go to coding meetup`);
+} else if (day === 'tuesday') {
+  console.log('Prepare theory videos');
+} else if (day === 'wednesday' || day === 'thursday') {
+  console.log(`Write code examples`);
+} else if (day === 'friday') {
+  console.log(`Record videos`);
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log(`Enjoy the weekend :D`);
+} else {
+  console.log(`Not a valid day!`);
+}
+*/
+
+//* 27장 Statements and Expressions
+/*
+선언(declaration)은 문장(statement) ==> 특정한 로직을 결정
+표현(expression)은 단어 (즉, 문장을 구성함) ==> 값을 생성
+
+! Example
+if (23 > 10) {
+  const str = `23 is bigger`;
+}
+if ~ 구문은 문장(statement)
+`23 is bigger` ==> 표현
+const str = `23 is bigger`; ==> 구문
+*/
+
+//* 28장 The Conditional(Ternary) Operator
+/*
+조건 연산자(3항 연산자)
+(조건) ? 참값 : 거짓값
+*/
+
+//* CODE
+/*
+const age = 23;
+age >= 18 ? console.log(`I like to drink wine 🍷`) : console.log(`I like to drink water 🥚`)
+
+const drink = age >= 18 ? 'wine 🍷' : 'water 🥚'
+console.log(drink);
+
+!너무 비효율적임
+let drink2;
+if (age >= 18) {
+  drink2 = 'wine 🍷';
+} else {
+  drink2 = 'water 🥚';
+}
+console.log(drink2);
+
+console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 🥚'}`);
+*/
+
+//* 29장 Coding Challenge #4
+/*
+
+*/
+
 // 30장 JavaScript Releases: ES5, ES6 + and ESNext

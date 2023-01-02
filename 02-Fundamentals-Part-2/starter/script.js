@@ -249,13 +249,153 @@ checkWinner(avgDolphins, avgKoalas);
 */
 
 //* 39장 Introduction to Arrays
+/*
+같은 데이터의 유형을 묶어줌
 
+대괄호를 사용해서 배열을 묶는것이 더 일반적임
+그리고 대괄호를 이용해서 묶는 방법을 '리터럴 구문'이라고도 함
 
-//* 40장 Basic Array Operations (Methods)
+!배열자체는 기본값이 아님 그래서 const로 선언했더라도 내부의 배열값은 변경가능함!!
+!const로 선언한 배열은 배열변수에 직접 새로운 배열을 다시 할당하려고 할때가 문제임
+*/
+//* CODE
+/*
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
 
+const friends = ['Michael', 'Steven', 'Peter'];
+console.log(friends);
+
+//여기서 Array는 함수임
+const Y = new Array(1991, 1984, 2008, 2020);
+
+// 배열은 0부터 시작함(루아랑 다름, 일반적인 프로그래밍 언어와 같음)
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+* const로 선언해도 왜 변경가능할까???
+! 가능
+friends[2] = 'Jay'
+console.log(friends);
+
+! 불가능, 배열변수에 직접 새로운 배열을 할당하는것은 불가능함
+// friends = ['Bob', 'Alice'];
+
+const firstName = 'Jonas';
+const jonas = [firstName, 'Schmedtmann', 2037 - 1991, 'teacher', friends];
+console.log(jonas);
+
+*Exercise
+function calcAge(birthYear) {
+  return 2037 - birthYear;
+}
+const years = [1990, 1967, 2002, 2010, 2018];
+// console.log(calcAge(years));  //NaN
+const age1 = calcAge(years[0]);
+const age2 = calcAge(years[1]);
+const age3 = calcAge(years[years.length - 1]);
+console.log(age1, age2, age3);
+const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])]
+console.log(ages)
+*/
+
+//* 40장 Basic Array Operations (Methods) (Array 함수들)
+/*
+*Add elements
+Array.push(elem)
+새로운 배열값을 마지막 인덱스 다음에 추가하고, 추가한 후 배열의 길이를 반환함
+Array.unshift(elem)
+새로운 배열값을 첫 인덱스에 추가하고, 추가한 후 배열의 길이를 반환함
+
+*Remove elements
+Array.pop()
+마지막 인덱스의 배열값을 제거하고, 제거한 배열값을 반환함
+Array.shift()
+첫번째 인덱스의 배열값을 제거하고, 제거한 배열값을 반환함
+
+*Search elements
+Array.indexOf(elem)
+해당 데이터가 있는 index를 반환함. 만약, 존재하지 않을경우 -1을 반환
+Array.includes(elem)
+해당 데이터가 존재하는지 boolean값으로 반환
+*/
+//*CODE
+/*
+const friends = ['Michael', 'Steven', 'Peter'];
+*Add elements
+const newLength = friends.push('Jay');
+console.log(friends);
+console.log(newLength);
+
+friends.unshift('John');
+console.log(friends);
+
+*Remove elements
+friends.pop();  // 마지막 값을 제거 후 반환
+const popped = friends.pop(); // 'Peter'
+console.log(popped);
+console.log(friends);
+
+friends.shift();  // 첫번째 값을 제거 후 반환
+console.log(friends);
+
+console.log(friends.indexOf('Steven')); // 해당 값의 index를 반환
+console.log(friends.indexOf('Bob')); // 값이 없으면 -1을 반환함
+
+friends.push(23);
+console.log(friends.includes('Steven'));  // 해당 값이 있으면 true반환
+console.log(friends.includes('Bob')); // 해당 값이 없으면 false반환
+console.log(friends.includes('23'));  // 넣은값은 23이란 숫자이고 확인한값은 '23'인 string이므로 false반환
+!즉, Array.includes() 강제 형변환을 하지 않음
+
+if (friends.includes('Steven')) {
+  console.log('You have a friend called Steven');
+}
+*/
 
 //* 41장 Coding Challenge #2
+/*
+Steven is still building his tip calculator, using the same rules as before: Tip 15% of
+the bill if the bill value is between 50 and 300, and if the value is different, the tip is
+20%.
 
+Your tasks:
+1. Write a function 'calcTip' that takes any bill value as an input and returns
+the corresponding tip, calculated based on the rules above (you can check out
+the code from first tip calculator challenge if you need to). Use the function
+type you like the most. Test the function using a bill value of 100
+2. And now let's use arrays! So create an array 'bills' containing the test data
+below
+3. Create an array 'tips' containing the tip value for each bill, calculated from
+the function you created before
+4. Bonus: Create an array 'total' containing the total values, so the bill + tip
+Test data: 125, 555 and 44
+// Hint: Remember that an array needs a value in each position, and that value can
+// actually be the returned value of a function! So you can just call a function as array
+// values (so don't store the tip values in separate variables first, but right in the new
+// array)
+*/
+//*CODE
+/*
+const calcTip = function (bill) {
+  return (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.2;
+}
+console.log(`Test 100$'s tip ${calcTip(100)}`);
+
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+
+const calcTotal = (bill, tip) => bill + tip;
+const totals = [calcTotal(bills[0], tips[0]), calcTotal(bills[1], tips[1]), calcTotal(bills[2], tips[2])];
+console.log(`bills : ${bills}
+tips  : ${tips}
+total : ${totals}
+`)
+*/
 
 //* 42장 Introduction to Objects
 

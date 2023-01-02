@@ -248,6 +248,9 @@ avgKoalas = calcAverage(23, 34, 27);
 checkWinner(avgDolphins, avgKoalas);
 */
 
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+//* 자료구조(Data Structure)
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 //* 39장 Introduction to Arrays
 /*
 같은 데이터의 유형을 묶어줌
@@ -398,19 +401,178 @@ total : ${totals}
 */
 
 //* 42장 Introduction to Objects
+/*
+배열은 여러개의 자료를 한곳에 모을수는 있지만 각 데이터에 어떠한 의미가 있는지 파악하기 어려움
+!그래서 javascript에는 Object자료형이 있음
 
+각 키를 속성(property)라고도 함
+Object명 = {
+  키1: 자료,
+  키2: 자료, ...
+}
 
-//* 43장 Dot vs. Bracket Notation
+객체(object)를 생성하는 방법에는 여러가지가 있음
+가장 간단한 방법은 중괄호를 이용해서 만드는 것임
+!객체와 배열의 차이점은 검색할때 해당 내부 자료의 순서와 전혀 관계가 없다는점(객체)
+배열에서는 요소를 지정하는 순서가 매우 중요(왜냐하면 해당 요소를 접근할때 index로 하기 위해)
+*/
+//*CODE
+/*
+*5개의 속성(property)를 갖고있음
+*객체 리터럴 구문(object literal syntax)
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Scmedtmann',
+  age: 2037 - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven']
+};
+*/
 
+//* 43장 Dot vs. Bracket Notation (객체의 데이터 접근방법)
+/*
+Bracket Notation
+프로퍼티의 이름을 계산해야 할때 해당 방법을 자주씀
 
-//* 44장 Object Methods
+Dot
+일반적인 경우
+*/
+//*CODE
+/*
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Scmedtmann',
+  age: 2037 - 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven']
+};
+console.log(jonas);
 
+// Dot
+console.log(jonas.lastName);
+// Bracket Notation
+console.log(jonas['lastName']);
+
+//반복된 키값의 문자열을 따로 빼서 사용하는 방법이 존재
+const nameKey = 'Name';
+console.log(jonas['first' + nameKey]);
+console.log(jonas['last' + nameKey]);
+
+const interesetdIn = prompt('What do you want to know about Jonas? Choose betweend firstName, lastName, age, job, and friends')
+
+if (jonas[interesetdIn]) {
+  console.log(jonas[interesetdIn]); // 존재하지 않은 키값을 사용하면 undefined를 뱉어냄
+} else {
+  console.log(`Wrong request! Choose betweend firstName, lastName, age, job, and friends`)
+}
+
+jonas.loaction = 'Protugal';
+jonas['twitter'] = '@jonasschmedtman';
+console.log(jonas);
+
+*Chalenge
+출력 : "Jonas has 3 friends, and his best friend is called Michael"
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`)
+*/
+
+//* 44장 Object Methods (객체 매소드)
+/*
+*/
+//*CODE
+/*
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Scmedtmann',
+  birthYear: 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear;
+  // },
+
+  !매우 중요한 this 키워드(객체 본인을 가리킬수 있음)
+  //즉, 객체 내에서 자신 객체의 프로퍼티를 접근을 쉽게 할 수 있게함
+  // calcAge: function () {
+  //   // console.log(this);
+  //   return 2037 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license"`;
+  }
+};
+
+console.log(jonas.calcAge());
+
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
+
+//* Challenge
+//* "Jonas is a 46-year old teacher, and he has a driver's license" 만약 없으면 ~ has no driver's license
+console.log(jonas.getSummary());
+*/
 
 //* 45장 Coding Challenge #3
+/*
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to
+implement the calculations! Remember: BMI = mass / height ** 2 = mass
+/ (height * height) (mass in kg and height in meter)
 
+Your tasks:
+1. For each of them, create an object with properties for their full name, mass, and
+height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same
+method on both objects). Store the BMI value to a property, and also return it
+from the method
+3. Log to the console who has the higher BMI, together with the full name and the
+respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
+tall.
+*/
+//*CODE
+/*
+const mark = {
+  fullName: 'Mark Miller',
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2
+    return this.BMI
+  },
+}
+
+const john = {
+  fullName: 'John Smith',
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2
+    return this.BMI
+  },
+}
+
+if (mark.calcBMI() != john.calcBMI()) {
+  const bHigherMarkBMI = mark.BMI > john.BMI;
+  console.log(`${bHigherMarkBMI ? mark.fullName : john.fullName}'s BMI(${bHigherMarkBMI ? mark.BMI : john.BMI}) is higher than ${(!bHigherMarkBMI) ? mark.fullName : john.fullName}'s BMI(${!bHigherMarkBMI ? mark.BMI : john.BMI})`)
+} else {
+  console.log(`${mark.fullName}'s BMI and ${john.fullName}'s BMI are same!`)
+}
+*/
 
 //* 46장 Iteration: The for Loop
-
+/*
+*/
+//*CODE
+/*
+*/
 
 //* 47장 Looping Arrays, Breaking and Continuing
 

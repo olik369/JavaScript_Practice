@@ -569,19 +569,180 @@ if (mark.calcBMI() != john.calcBMI()) {
 
 //* 46장 Iteration: The for Loop
 /*
+for(초기값; 조건; 증분값)
 */
 //*CODE
 /*
+// 미친짓임
+// console.log('Lifting weights repetition 1');
+// console.log('Lifting weights repetition 2');
+// console.log('Lifting weights repetition 3');
+// console.log('Lifting weights repetition 4');
+// console.log('Lifting weights repetition 5');
+// console.log('Lifting weights repetition 6');
+// console.log('Lifting weights repetition 7');
+// console.log('Lifting weights repetition 8');
+// console.log('Lifting weights repetition 9');
+// console.log('Lifting weights repetition 10');
+* 1~10
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep}`);
+}
+
+* 5~10
+for (let rep = 5; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep}`);
+}
 */
 
 //* 47장 Looping Arrays, Breaking and Continuing
+//*CODE
+/*
+const jonas = [
+  'Jonas',
+  'Scmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+  true
+];
+const types = [];
 
+for (let i = 0; i < jonas.length; i++) {
+  //* Reading from jonas array
+  console.log(jonas[i], typeof (jonas[i]));
+
+  // Filling types array
+  // types[i] = typeof(jonas[i]);
+  types.push(typeof (jonas[i]));
+}
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+//* continue and break
+console.log('--- ONLY STRINGS ---')
+for (let i = 0; i < jonas.length; i++) {
+  //문자열만 기록되고 아닌것들은 해당 반복에서 제외됨
+  if (typeof jonas[i] !== 'string') continue;
+  console.log(jonas[i], typeof (jonas[i]));
+}
+
+console.log('--- BREAK WITH NUMBER ---')
+for (let i = 0; i < jonas.length; i++) {
+  //숫자를 찾기 전까지 기록됨
+  if (typeof jonas[i] === 'number') break;
+  console.log(jonas[i], typeof (jonas[i]));
+}
+*/
 
 //* 48장 Looping Backwards and Loops in Loops
+//*CODE
+/*
+const jonas = [
+  'Jonas',
+  'Scmedtmann',
+  2037 - 1991,
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+  true
+];
 
+// Looping Backwards
+for (let i = jonas.length - 1; i >= 0; i--) {
+  console.log(i, jonas[i]);
+}
+
+for (let exercise = 1; exercise <= 3; exercise++) {
+  console.log(`--------- Starting exercise ${exercise}`);
+  for (let rep = 1; rep <= 5; rep++) {
+    console.log(`Exercise${exercise}: Lifting weight repetition ${rep}`);
+  }
+}
+*/
 
 //* 49장 The while Loop
+/*
+while loop의 가장큰 특징은 반드시 카운터 숫자가 필요하지 않은것임
+즉, 반복할 횟수를 알수 없을때 매우 용이함
+*/
+//*CODE
+/*
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetition ${rep}`);
+// }
 
+let rep = 1
+while (rep <= 10) {
+  console.log(`WHILE: Lifting weights repetition ${rep}`);
+  rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log('Loop is about to end...');
+}
+*/
 
 //* 50장 Coding Challenge #4
+/*
+Let's improve Steven's tip calculator even more, this time using loops!
 
+Your tasks:
+1. Create an array 'bills' containing all 10 test bill values
+2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate
+tips and total values (bill + tip) for every bill value in the bills array. Use a for
+loop to perform the 10 calculations!
+Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+
+// Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the
+// tips and totals arrays �
+Bonus:
+4. Bonus: Write a function 'calcAverage' which takes an array called 'arr' as
+an argument. This function calculates the average of all numbers in the given
+array. This is a difficult challenge (we haven't done this before)! Here is how to
+solve it:
+4.1. First, you will need to add up all values in the array. To do the addition,
+start by creating a variable 'sum' that starts at 0. Then loop over the
+array using a for loop. In each iteration, add the current value to the
+'sum' variable. This way, by the end of the loop, you have all values
+added together
+4.2. To calculate the average, divide the sum you calculated before by the
+length of the array (because that's the number of elements)
+4.3. Call the function with the 'totals' array
+*/
+//*CODE
+/*
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+function calcTip(bill) {
+  return (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.2;
+}
+for (let i = 0; i < bills.length; i++) {
+  tips.push(calcTip(bills[i]));
+  totals.push(tips[i] + bills[i]);
+}
+
+function calcAvg(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+
+  return (arr.length > 0) ? sum / arr.length : 0;
+}
+console.log(`total's avg ${calcAvg(totals)}`);
+*/
